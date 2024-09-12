@@ -73,10 +73,12 @@ fun ListAllCharacters(controleDeNavegacao: NavHostController) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0x850B8991)
             )
+
             Spacer(modifier = Modifier.height(16.dp))
+
             LazyColumn() {
                 items(characterList){
-                    CharacterCard(it)
+                    CharacterCard(it, controleDeNavegacao)
                 }
             }
         }
@@ -84,7 +86,7 @@ fun ListAllCharacters(controleDeNavegacao: NavHostController) {
 }
 
 @Composable
-fun CharacterCard(character: Character) {
+fun CharacterCard(character: Character, controleDeNavegacao: NavHostController) {
 
     val context = LocalContext.current
     Card(
@@ -93,12 +95,7 @@ fun CharacterCard(character: Character) {
             .fillMaxWidth()
             .height(100.dp)
             .clickable {
-                Toast
-                    .makeText(
-                        context,
-                        "Personagem: ${character.id}",
-                        Toast.LENGTH_SHORT)
-                    .show()
+                        controleDeNavegacao.navigate("characterDetails/${character.id}")
             },
         colors = CardDefaults
             .cardColors(
@@ -134,7 +131,7 @@ fun CharacterCard(character: Character) {
 @Preview
 @Composable
 private fun CharacterCardPreview() {
-    CharacterCard(Character())
+    //CharacterCard(Character())
 }
 
 @Preview

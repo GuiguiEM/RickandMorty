@@ -3,6 +3,7 @@ package br.senai.sp.jandira.rickandmorty.service
 import br.senai.sp.jandira.rickandmorty.model.Character
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class RetrofitFactory {
 
@@ -16,5 +17,9 @@ class RetrofitFactory {
 
     fun getCharacterService(): CharacterService{
         return retrofitFactory.create(CharacterService::class.java)
+    }
+
+    fun getEpisodeService(): EpisodeService{
+        return retrofitFactory.create(EpisodeService::class.java)
     }
 }
